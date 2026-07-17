@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prescription Added</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #fff;
+    }
+
+    /* Logo Section */
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 30px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #2a5bd7;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo span {
+      color: #000;
+      font-weight: normal;
+    }
+
+    .logo::before {
+      content: "♥";
+      color: #2a5bd7;
+      font-size: 22px;
+      margin-right: 6px;
+    }
+
+  img {
+    height: 190px;
+  }
+
+    /* Message */
+    .message {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #000;
+    }
+
+    /* Buttons */
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 15px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .btn-back {
+      background-color: #6c97fb;
+      color: #ffffff;
+    }
+
+    .btn-add {
+      background-color: #38ca7a;
+      color: #000000;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo -->
+  <div class="logo">
+    Health<span>Care</span>
+  </div>
+
+  <!-- Success Checkmark -->
+  <div class="success-icon">
+    <img src="tickmark.jpg" alt="">
+  </div>
+
+  <!-- Message -->
+  <div class="message">prescription added successfully</div>
+
+  <!-- Buttons -->
+  <div class="buttons">
+  <a href="Patientview.html"><button class="btn btn-back">Go Back</button></a>
+  </div>
+
+</body>
+</html>

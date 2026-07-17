@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Prescriptions | HealthCare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      background: #eaf0fa;
+      color: #333;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, #e3eafc 0%, #c7d6f7 100%);
+      padding: 18px 40px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.07);
+      border-bottom: 1px solid #d0d8e8;
+    }
+    .navbar-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .blue-heart {
+      color: #007bff;
+      font-size: 26px;
+      font-weight: bold;
+      margin-right: 6px;
+    }
+    .navbar-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #007bff;
+      letter-spacing: 1px;
+    }
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+    .navbar-right a {
+      text-decoration: none;
+      color: #007bff;
+      font-weight: 600;
+      font-size: 18px;
+      padding: 8px 18px;
+      border-radius: 10px;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+    .navbar-right a:hover {
+      background: #dbeafe;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      padding: 40px 30px;
+    }
+    h2 {
+      text-align: center;
+      color: #007bff;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+    .prescription-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    .prescription-table th, .prescription-table td {
+      border: 1px solid #e0e0e0;
+      padding: 12px 10px;
+      text-align: left;
+    }
+    .prescription-table th {
+      background: #e6f0ff;
+      color: #007bff;
+      font-weight: 600;
+    }
+    .prescription-table tr:nth-child(even) {
+      background: #f4f8ff;
+    }
+    .no-data {
+      text-align: center;
+      color: #888;
+      font-size: 1.1rem;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-left">
+      <span class="blue-heart">💙</span>
+      <span class="navbar-title">HealthCare</span>
+    </div>
+    <div class="navbar-right">
+      <a href="doctor.html">Home</a>
+    </div>
+  </nav>
+  <div class="container">
+    <h2>Prescriptions</h2>
+    <div id="prescriptionContent">
+      <!-- Table or no data message will be injected here -->
+    </div>
+  </div>
+  <script>
+    fetch('/api/prescriptions')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById('prescriptionContent');
+        if (Array.isArray(data) && data.length > 0) {
+          let table = '<table class="prescription-table">';
+          table += '<tr><th>Date</th><th>Patient Name</th><th>Mobile</th><th>Age</th><th>Address</th><th>Disease</th><th>Medicine Advised</th></tr>';
+          data.forEach(p => {
+            table += `<tr>
+              <td>${p.date || ''}</td>
+              <td>${p.patientName || ''}</td>
+              <td>${p.mobile || ''}</td>
+              <td>${p.age || ''}</td>
+              <td>${p.address || ''}</td>
+              <td>${p.disease || ''}</td>
+              <td>${p.medicineAdvised || ''}</td>
+            </tr>`;
+          });
+          table += '</table>';
+          container.innerHTML = table;
+        } else {
+          container.innerHTML = '<div class="no-data">No prescriptions found.</div>';
+        }
+      })
+      .catch(() => {
+        document.getElementById('prescriptionContent').innerHTML = '<div class="no-data">Error loading prescriptions.</div>';
+      });
+  </script>
+</body>
+</html>

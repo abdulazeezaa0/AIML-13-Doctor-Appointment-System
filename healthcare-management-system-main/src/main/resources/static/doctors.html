@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctors - HealthCare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    body {
+      background: #f4f8ff;
+      font-family: 'Outfit', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar {
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      padding: 0.7rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .navbar-left {
+      display: flex;
+      align-items: center;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #1976d2;
+    }
+    .navbar-left .fa-heart {
+      color: #1976d2;
+      margin-right: 8px;
+      font-size: 1.3rem;
+    }
+    .navbar-right a {
+      color: #1976d2;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 6px 18px;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .navbar-right a:hover {
+      background: #e3f0ff;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0px 6px 18px rgba(0,0,0,0.08);
+      padding: 28px 18px;
+      text-align: center;
+    }
+    .dept-title {
+      color: #1976d2;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+    .doctors-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px 32px;
+      justify-content: center;
+      margin-top: 18px;
+    }
+    .doctor-card {
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(25, 118, 210, 0.10);
+      padding: 28px 22px;
+      min-width: 240px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      font-family: 'Outfit', sans-serif;
+      transition: box-shadow 0.2s, transform 0.2s;
+      background: #fff;
+      border: 2px solid #e3f0ff;
+    }
+    .doctor-card:nth-child(1) { background: #e3f0ff; border-color: #b3c7f7; }
+    .doctor-card:nth-child(2) { background: #FDDBEC; border-color: #F4E495; }
+    .doctor-card:nth-child(3) { background: #B9E6D4; border-color: #e3f0ff; }
+    .doctor-card:nth-child(4) { background: #F4E495; border-color: #FDDBEC; }
+    .doctor-card:hover {
+      box-shadow: 0 12px 32px rgba(25, 118, 210, 0.18);
+      transform: translateY(-6px) scale(1.03);
+      border-color: #1976d2;
+    }
+    .doctor-name, .doctor-info, .doctor-exp {
+      color: #222 !important;
+      text-shadow: 0 1px 0 #fff, 0 0px 2px #e3f0ff;
+    }
+    .doctor-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #1976d2;
+      margin-bottom: 8px;
+    }
+    .doctor-info {
+      font-size: 0.98rem;
+      color: #333;
+      margin-bottom: 8px;
+    }
+    .doctor-exp {
+      font-size: 0.95rem;
+      color: #388e3c;
+      margin-bottom: 12px;
+    }
+    .book-btn {
+      padding: 8px 16px;
+      background: #1976d2;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+      align-self: stretch;
+    }
+    .book-btn:hover {
+      background: #1565c0;
+    }
+    .dept-select {
+      margin-bottom: 18px;
+      font-size: 1.05rem;
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1px solid #90caf9;
+      background: #f9faff;
+      color: #1976d2;
+      font-weight: 500;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-left">
+      <i class="fa-solid fa-heart"></i> HealthCare
+    </div>
+    <div class="navbar-right">
+      <a href="Patientview.html"><i class="fa-solid fa-house"></i> Home</a>
+    </div>
+  </div>
+  <div class="container">
+    <select id="deptSelect" class="dept-select">
+      <option value="Cardiology">Cardiology</option>
+      <option value="Dermatology">Dermatology</option>
+      <option value="Gynecology">Gynecology</option>
+      <option value="Diabetes">Diabetes</option>
+    </select>
+    <div class="dept-title" id="deptTitle">Cardiology Doctors</div>
+    <div class="doctors-list" id="doctorsList"></div>
+  </div>
+  <script>
+    const doctorsData = {
+      Cardiology: [
+        { name: "Dr. Vishnu Vardhan", info: "Interventional Cardiologist, MBBS, MD, DM", exp: "15+ years experience in heart surgeries and stent placements." },
+        { name: "Dr. Sathvik", info: "Cardiac Electrophysiologist, MBBS, MD", exp: "12+ years in arrhythmia and pacemaker treatments." },
+        { name: "Dr. Phanindra", info: "Pediatric Cardiologist, MBBS, MD", exp: "10+ years treating congenital heart diseases in children." },
+        { name: "Dr. Mohammad Adil", info: "Cardiologist, MBBS, MD", exp: "18+ years in preventive cardiology and heart health." }
+      ],
+      Dermatology: [
+        { name: "Dr. Shashikanth", info: "Dermatologist, MBBS, MD", exp: "14+ years in skin allergy and cosmetic treatments." },
+        { name: "Dr. Koushik", info: "Dermatopathologist, MBBS, MD", exp: "11+ years in skin biopsy and diagnosis." },
+        { name: "Dr. Rajesh", info: "Pediatric Dermatologist, MBBS, MD", exp: "9+ years treating childhood skin disorders." },
+        { name: "Dr. Manoj Kumar", info: "Cosmetic Dermatologist, MBBS, MD", exp: "16+ years in laser and aesthetic procedures." }
+      ],
+      Gynecology: [
+        { name: "Dr. Sai Charan", info: "Gynecologist, MBBS, MD", exp: "20+ years in women's health and high-risk pregnancies." },
+        { name: "Dr. Annu Kumar", info: "Obstetrician & Gynecologist, MBBS, MD", exp: "17+ years in infertility and IVF treatments." },
+        { name: "Dr. Yakshendranadh", info: "Gynecologic Oncologist, MBBS, MD", exp: "13+ years in cancer care for women." },
+        { name: "Dr. Akshay", info: "Gynecologist, MBBS, MD", exp: "15+ years in adolescent and menopausal care." }
+      ],
+      Diabetes: [
+        { name: "Dr. Amit Desai", info: "Endocrinologist, MBBS, MD, DM", exp: "19+ years in diabetes management and insulin therapy." },
+        { name: "Dr. Pooja Nair", info: "Diabetologist, MBBS, MD", exp: "12+ years in diet planning and diabetes reversal." },
+        { name: "Dr. Sanjay Kumar", info: "Pediatric Endocrinologist, MBBS, MD", exp: "10+ years treating childhood diabetes." },
+        { name: "Dr. Shalini Gupta", info: "Diabetes Educator, MBBS, MD", exp: "15+ years in patient education and lifestyle management." }
+      ]
+    };
+
+    function renderDoctors(dept) {
+      const doctors = doctorsData[dept];
+      document.getElementById('deptTitle').textContent = dept + ' Doctors';
+      document.getElementById('deptSelect').value = dept;
+      const list = document.getElementById('doctorsList');
+      list.innerHTML = '';
+      doctors.forEach(doc => {
+        const card = document.createElement('div');
+        card.className = 'doctor-card';
+        card.innerHTML = `
+          <div class="doctor-name">${doc.name}</div>
+          <div class="doctor-info">${doc.info}</div>
+          <div class="doctor-exp">${doc.exp}</div>
+          <button class="book-btn" onclick="window.location.href='doctorappointment.html?dept=${encodeURIComponent(dept)}'">Book Appointment</button>
+        `;
+        list.appendChild(card);
+      });
+    }
+
+    document.getElementById('deptSelect').addEventListener('change', function() {
+      renderDoctors(this.value);
+    });
+
+    // Get department from query string
+    function getDeptFromQuery() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('dept') || 'Cardiology';
+    }
+
+    // Initial render based on query string
+    renderDoctors(getDeptFromQuery());
+  </script>
+</body>
+</html>

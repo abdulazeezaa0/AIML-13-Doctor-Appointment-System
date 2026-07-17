@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealthCare</title>
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <script src="script.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Outfit', sans-serif;
+}
+body {
+  background: #f4f8ff;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
+.header {
+  background: #fff;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #007bff;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+.btn-primary {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 15px 10px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.btn-primary:hover {
+  background: #0056b3;
+}
+
+/* Hero */
+/* Hero */
+.hero {
+  margin-top:10px;
+  text-align: center;
+  padding: 60px 20px;
+  background: url('healthcare_banner.jpg') no-repeat center/cover;
+  color: #333;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(78, 76, 76, 0.214); /* light overlay for text readability */
+}
+
+.hero h2,
+.hero p {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h2 {
+  font-size: 42px;
+  margin-bottom: 20px;
+  color: #3a8cff;
+  font-weight: 700;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #000000;
+  line-height: 1.6;
+}
+
+
+/* Services Section */
+.services {
+  display: flex;
+  justify-content: center;   /* Center align */
+  gap: 60px;
+  margin: 80px auto;
+  max-width: 1000px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.service-card {
+  flex: 1;
+  min-width: 250px;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease;
+}
+.service-card:hover {
+  transform: translateY(-4px);
+}
+
+/* General spacing for the whole page */
+section {
+  margin: 80px auto;
+  max-width: 1200px;
+  padding: 0 40px;
+}
+
+/* Departments */
+.departments {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 per row */
+  gap: 30px 40px; /* vertical and horizontal spacing */
+  margin-top: 60px;
+  cursor: pointer;
+}
+
+.dep-card {
+  background: #fff;
+  padding: 30px 25px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease;
+}
+.dep-card:hover {
+  transform: translateY(-4px);
+}
+.dep-card h4 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #007bff;
+}
+.dep-card .arrow {
+  font-size: 20px;
+  color: #333;
+  margin-left: 10px;
+}
+.dep-card p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.5;
+}
+
+
+/* About */
+/* About Us Section */
+.about {
+  display: flex;
+  justify-content: center;   /* Center section */
+  align-items: flex-start;
+  gap: 50px;
+  margin: 100px auto;
+  max-width: 1100px;
+  padding: 0 40px;
+}
+.about-text {
+  flex: 1.2;
+}
+.about-text h3 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #007bff;
+}
+.about-text p {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.7;
+}
+.stats {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+.stat {
+  background: #fff;
+  padding: 20px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+.stat span {
+  font-size: 28px;
+  font-weight: 700;
+  /* color: #007bff; */
+}
+/* Contact */
+/* Contact Section */
+.contact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 40px;
+  margin: 80px auto;
+  max-width: 1100px;
+  background: #f4f8ff;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  gap: 40px;
+}
+
+.contact-left {
+  flex: 1;
+}
+
+.contact-left h3 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  margin-left: 150px;
+  color: #007bff;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+  outline: none;
+  background: #fff;
+}
+
+.contact-form textarea {
+  resize: none;
+  height: 120px;
+}
+
+.contact-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-right img {
+  width: 260px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+
+/* Footer */
+.footer {
+  background: #f8f9fa;
+  padding: 60px 40px;
+  margin-top: 80px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.footer-left {
+  flex: 1;
+  min-width: 220px;
+}
+
+.footer-logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 80px;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.footer-links div {
+  min-width: 160px;
+}
+
+.footer h4 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: #333;
+  font-weight: 600;
+}
+
+.footer p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.footer .copyright {
+  font-size: 13px;
+  color: #777;
+  margin-top: 10px;
+}
+
+/* Smooth hover transitions for all interactive elements */
+a, button, .service-card, .dep-card, .stat, .nav-links a {
+  transition: all 0.3s ease;
+}
+
+/* Navbar links */
+.nav-links a:hover {
+  color: #007bff;
+  transform: translateY(-2px);
+}
+
+/* Buttons */
+.btn-primary {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background: #0056b3;
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0, 123, 255, 0.3);
+}
+
+/* Service Cards */
+.service-card {
+  flex: 1;
+  min-width: 250px;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+.service-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+}
+
+/* Department Cards */
+.dep-card {
+  background: #fff;
+  padding: 30px 25px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+.dep-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+}
+
+/* Stats (About section numbers) */
+.stat {
+  background: #fff;
+  padding: 20px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+.stat:hover {
+  transform: scale(1.08);
+  background: #f4f8ff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* Footer links */
+.footer-links p {
+  transition: all 0.3s ease;
+}
+.footer-links p:hover {
+  color: #007bff;
+  transform: translateX(4px);
+}
+
+/* ===================== Responsive Design ===================== */
+
+/* Large tablets and small laptops */
+@media (max-width: 1024px) {
+  .header {
+    padding: 15px 25px;
+  }
+
+  .hero {
+    padding: 40px 15px;
+    height: auto;
+  }
+  .hero h2 { font-size: 34px; }
+  .hero p { font-size: 16px; }
+
+  .services {
+    gap: 30px;
+  }
+
+  .about {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+  .stats {
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+  .contact-left h3 {
+    margin-left: 0;
+  }
+  .contact-right img {
+    width: 220px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+    align-items: center;
+  }
+  .footer-left {
+    text-align: center;
+  }
+  .footer-links {
+    justify-content: center;
+    gap: 40px;
+  }
+}
+
+/* Tablets and large mobiles */
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 15px;
+    font-size: 14px;
+  }
+  .btn-primary {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .services {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .departments {
+    grid-template-columns: 1fr; /* 1 card per row */
+  }
+
+  .about-text h3 {
+    font-size: 22px;
+  }
+  .about-text p {
+    font-size: 14px;
+  }
+  .stat span {
+    font-size: 24px;
+  }
+
+  .contact {
+    padding: 40px 20px;
+  }
+  .contact-right img {
+    width: 200px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+/* Small mobiles */
+@media (max-width: 480px) {
+  .logo {
+    font-size: 18px;
+  }
+  .header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero h2 {
+    font-size: 26px;
+  }
+  .hero p {
+    font-size: 14px;
+  }
+
+  .service-card {
+    min-width: auto;
+    padding: 20px;
+  }
+
+  .dep-card {
+    padding: 20px;
+  }
+  .dep-card h4 {
+    font-size: 16px;
+  }
+  .dep-card p {
+    font-size: 14px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .footer {
+    padding: 40px 20px;
+  }
+  
+}
+.nav-links a:hover {
+  color: #007bff;
+  background: #e6f0ff;
+  border-radius: 8px;
+  padding: 6px 12px;
+  transform: translateY(-2px);
+}
+
+
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+
+    <div class="logo">💙 HealthCare</div>
+    <nav>
+      <ul class="nav-links">
+  <li><a href="#" style="color: blue;"><strong>Home</strong></a></li>
+  <li><a href="#departments">Departments</a></li>
+  <li><a href="medicinepage.html">Medicine</a></li>
+  <li><a href="#aboutus">About Us</a></li>
+  <li><a href="#contactus">Contact Us</a></li>
+  <li><a href="donateblood.html">Donate Blood</a></li>
+      </ul>
+    </nav>
+  <div style="display:inline-flex; gap:0px; align-items:center;">
+    <a href="appointmentpage.html"><button class="btn-primary">Book Consultation</button></a>
+    <a href="index.html"><button class="btn-primary" style="color:#000000; border:2px solid blue; background-color: white; margin-left: 12px;">Logout</button></a>
+  </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h2>Health Care</h2>
+    <p>Don’t wait for tomorrow. Your health needs care. Book a consultation.<br> 
+       We’re using modern technologies and professional doctors for your health.</p>
+  </section>
+
+  <!-- Services -->
+  <section class="services">
+  <div class="service-card blue" style="background-color: #e3f0ff;">
+      <a href="viewbookings.html" style="text-decoration:none;color:inherit;">
+        <h3>📖 View my Bookings</h3>
+        <p>Check your appointments easily in one place.</p>
+      </a>
+  </div>
+  <div class="service-card pink" style="background-color: #FDDBEC;">
+    <h3>📅 Book an Appointment</h3>
+    <p>Schedule your consultation easily with our doctors.</p>
+  </div>
+  <div class="service-card yellow" style="background-color: #F4E495;">
+    <h3>🧪 Lab Tests</h3>
+    <p>Get reliable and fast test reports with modern labs.</p>
+  </div>
+  <div class="service-card green" style="background-color: #B9E6D4;">
+    <h3>🚑 Emergency Services</h3>
+    <p>Available 24/7 for all kinds of emergencies.</p>
+  </div>
+</section>
+
+ <!-- Departments -->
+<section class="departments" id="departments">
+  <a href="doctors.html?dept=Cardiology" style="text-decoration:none;color:inherit;">
+    <div class="dep-card">
+      <h4>Cardiology <span class="arrow">→</span></h4>
+      <p>Caring for your heart with modern cardiology practices and treatments.</p>
+    </div>
+  </a>
+  <a href="doctors.html?dept=Dermatology" style="text-decoration:none;color:inherit;">
+    <div class="dep-card">
+      <h4>Dermatology <span class="arrow">→</span></h4>
+      <p>Skin and hair treatments with safe dermatological solutions.</p>
+    </div>
+  </a>
+  <a href="doctors.html?dept=Gynecology" style="text-decoration:none;color:inherit;">
+    <div class="dep-card">
+      <h4>Gynecology <span class="arrow">→</span></h4>
+      <p>Expert care for women’s health and comprehensive solutions.</p>
+    </div>
+  </a>
+  <a href="doctors.html?dept=Diabetes" style="text-decoration:none;color:inherit;">
+    <div class="dep-card">
+      <h4>Diabetes <span class="arrow">→</span></h4>
+      <p>Modern treatments for diabetes, managing insulin and diet plans.</p>
+    </div>
+  </a>
+</section>
+
+
+  <!-- About -->
+<section class="about" id="aboutus">
+  <div class="about-text">
+    <h3>ABOUT US</h3>
+    <p>
+      At <b>HealthCare</b>, we are committed to providing high-quality and 
+      compassionate medical services. With a team of expert doctors, 
+      advanced technology, and modern facilities, we ensure that every 
+      patient receives the best possible care. <br><br>
+      Our services include specialized departments such as cardiology, 
+      dermatology, gynecology, and diabetes care. We focus on preventive 
+      health check-ups, accurate diagnostics, and personalized treatments 
+      to help our patients live healthier lives. <br><br>
+      With 25+ clinics and 250+ qualified specialists, we have treated 
+      thousands of patients successfully and continue to grow as one of 
+      the most trusted healthcare providers in the region.
+    </p>
+  </div>
+  <div class="stats">
+    <div class="stat"><span style="color: orangered;">1000+</span><p>New Cases Every Year</p></div>
+    <div class="stat"><span>250+</span><p>Specialist Doctors</p></div>
+    <div class="stat"><span>500+</span><p>Patients Treated Every Day</p></div>
+    <div class="stat"><span>25</span><p>Hospitals & Clinics</p></div>
+  </div>
+</section>  
+
+ <!-- Contact -->
+<section class="contact" id="contactus">
+  <div class="contact-left">
+    <h3>Get in Touch</h3>
+    <form class="contact-form">
+      <input type="text" placeholder="Enter your name" required>
+      <input type="email" placeholder="Enter your email" required>
+      <textarea placeholder="Enter your message" required></textarea>
+      <button type="submit" class="btn-primary">Send Message</button>
+    </form>
+  </div>
+
+  <div class="contact-right">
+    <img src="c63f84397bf54e9961f6d8cf0dedcb13-removebg-preview.png" alt="Doctor">
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Left -->
+    <div class="footer-left">
+      <div class="footer-logo">💙 HealthCare</div>
+      <p class="copyright"><br>Abdul Azeez<br>© 2026 HealthCare. All rights reserved.</p>
+    </div>
+
+    <!-- Right -->
+    <div class="footer-links">
+      <div>
+        <h4>Pages</h4>
+        <p>Home<br>Departments<br>Medicine<br>About Us<br>Contact Us</p>
+      </div>
+      <div>
+        <h4>Departments</h4>
+        <p>Cardiology<br>Gynecology<br>Dermatology<br>Diabetes</p>
+      </div>
+      <div>
+        <h4>Contact Us</h4>
+        <p>🌍 www.healthcare.com<br>📧 azeez@healthcare.com<br>📞 +91 8099922007<br>🏥 Telangana, India</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

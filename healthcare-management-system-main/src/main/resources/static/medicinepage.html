@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Care Medicine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global Styles & Reset */
+        :root {
+            --primary-blue: #6a6ee0; /* For button and main text */
+            --secondary-light-blue: #e8f5fb; /* For input background */
+            --dark-blue: #2c3e50; /* For "Health Care" text */
+            --light-text: #95a5a6;
+            --heart-color: #e74c3c; /* Red heart */
+            --medicine-color: #3498db; /* Blue for medicine text */
+            --background-color: #ffffff;
+            --shadow-light: rgba(0, 0, 0, 0.05);
+            --border-color: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--background-color);
+            color: var(--dark-blue);
+            padding: 2rem;
+        }
+
+        /* Main Wrapper */
+        .page-wrapper {
+            display: flex;
+            width: 1000px; /* Adjust based on desired total width */
+            max-width: 95%;
+            background: #fff;
+            border-radius: 12px;
+            /* box-shadow: 0 10px 30px var(--shadow-light); / / Removed shadow as per image */
+            padding: 2rem;
+            align-items: flex-start; /* Align items to the top */
+            position: relative;
+        }
+
+        /* Header (Health Care) */
+        .top-header {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+        }
+
+        .top-header .heart-icon {
+            color: var(--heart-color); /* Red heart */
+            margin-right: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        /* Left Section (Form) */
+        .left-section {
+            flex: 1;
+            padding-top: 5rem; /* Space for the top header */
+            padding-left: 2rem; /* Give some padding */
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .left-section h2 {
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--medicine-color); /* Blue for medicine text */
+            margin-bottom: 1rem;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 1rem;
+            width: 350px; /* Fixed width for inputs */
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            padding-left: 3.5rem; /* Space for icon */
+            border: 1px solid var(--border-color); /* Subtle border */
+            border-radius: 10px; /* More rounded corners */
+            font-size: 1rem;
+            background-color: var(--secondary-light-blue); /* Light blue background */
+            color: var(--dark-blue);
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .input-group input::placeholder {
+            color: var(--light-text);
+        }
+
+        .input-group input:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(106, 110, 224, 0.2);
+        }
+
+        .input-group .icon {
+            position: absolute;
+            left: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--light-text);
+            font-size: 1.1rem;
+            pointer-events: none;
+        }
+
+        .buy-button {
+            width: 350px; /* Match input width */
+            padding: 1rem;
+            background-color: var(--primary-blue);
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            letter-spacing: 0.5px;
+            margin-top: 0.5rem;
+        }
+
+        .buy-button:hover {
+            background-color: #5559d3;
+            transform: translateY(-2px);
+        }
+
+        .buy-button:active {
+            transform: translateY(0);
+        }
+
+        /* Right Section (Doctor Image) */
+        .right-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 5rem; /* Align with left section's padding */
+        }
+
+        .doctor-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 400px; /* Adjust as needed */
+        }
+
+        /* Media Queries for Responsiveness */
+        @media(max-width: 768px) {
+            .page-wrapper {
+                flex-direction: column;
+                padding: 1rem;
+                align-items: center;
+            }
+
+            .top-header {
+                position: static; /* Allow it to flow with the document */
+                margin-bottom: 2rem;
+                justify-content: center;
+            }
+
+            .left-section, .right-section {
+                padding-top: 0;
+                width: 100%;
+                align-items: center;
+                text-align: center;
+            }
+
+            .left-section h2 {
+                margin-top: 1rem;
+            }
+
+            .input-group, .buy-button {
+                width: 90%; /* Make inputs and button take more width on small screens */
+                max-width: 350px; /* Maintain max width */
+            }
+
+            .doctor-image {
+                margin-top: 2rem;
+                max-height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="top-header">
+            <i class="fas fa-heart heart-icon"></i> Health Care
+        </div>
+
+        <div class="left-section">
+            <h2>Medicine</h2>
+            <div class="input-group">
+                <input type="text" id="medname" placeholder="Enter your name">
+                <i class="fas fa-user icon"></i>
+            </div>
+            
+            <div class="input-group">
+                <input type="tel" id="medmobile" placeholder="Enter your Mobile no">
+                <i class="fas fa-phone-alt icon"></i>
+            </div>
+            
+            <div class="input-group">
+                <input type="text" id="medmedicine" placeholder="Enter medicine">
+                <i class="fas fa-prescription-bottle-alt icon"></i> </div>
+            
+            <button class="buy-button" onclick="buyMedicine(event)">Buy now</button>
+<script>
+function buyMedicine(e) {
+    e.preventDefault();
+    const name = document.getElementById('medname').value.trim();
+    const mobile = document.getElementById('medmobile').value.trim();
+    const medicine = document.getElementById('medmedicine').value.trim();
+    if (!name || !mobile || !medicine) {
+        alert('Please fill all fields.');
+        return;
+    }
+        fetch('/api/medicine-orders', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, mobile, medicine })
+    })
+    .then(async response => {
+        if (response.ok) {
+            window.location.href = 'medicinepayment.html';
+        } else {
+            alert('Try again.');
+        }
+    })
+    .catch(() => {
+        alert('Try again.');
+    });
+}
+</script>
+        </div>
+
+        <div class="right-section">
+            <img src="acdac8484dbc55288f48b2bd35e42300-removebg-preview.png">
+        </div>
+    </div>
+</body>
+</html>

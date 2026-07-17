@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Health Care - Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== Reset ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #e0ebff, #f8f9fd, #d7e4f5); /* soft gradient */
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      padding: 2rem 3rem;
+      border-radius: 16px;
+      box-shadow: 0px 6px 18px rgba(0,0,0,0.12);
+      width: 900px;
+      max-width: 95%;
+    }
+
+    /* ===== Left (Form) ===== */
+    .form-section {
+      flex: 1;
+      padding: 2rem;
+    }
+
+    .logo {
+      font-size: 1.9rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      color: #1d3cb3;
+      text-align: center;
+    }
+
+    .logo span {
+      color: #333;
+      font-weight: 600;
+    }
+
+    .form-section h2 {
+      color: #1d3cb3;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .input-box {
+      margin-bottom: 1rem;
+    }
+
+    .input-box input {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border-radius: 8px;
+      border: 1px solid #d3d8f0;
+      outline: none;
+      font-size: 1rem;
+      background: #f9faff;
+      transition: 0.3s;
+    }
+
+    .input-box input:focus {
+      border-color: #4a68f6;
+      background: #fff;
+      box-shadow: 0 0 6px rgba(74,104,246,0.3);
+    }
+
+    .input-box input::placeholder {
+      color: #777;
+    }
+
+.input-box select {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #d3d8f0;
+  outline: none;
+  font-size: 1rem;
+  background: #f9faff;
+  transition: 0.3s;
+  appearance: none; /* removes default arrow in some browsers */
+}
+
+.input-box select:focus {
+  border-color: #4a68f6;
+  background: #fff;
+  box-shadow: 0 0 6px rgba(74,104,246,0.3);
+}
+
+    .btn-login {
+      width: 100%;
+      background: #4a68f6;
+      color: #fff;
+      padding: 0.9rem;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      margin-top: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-login:hover {
+      background: #1d3cb3;
+    }
+
+    .register-link {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #000;
+      text-align: center;
+    }
+
+    .register-link a {
+      text-decoration: none;
+      color: #1d3cb3;
+      font-weight: bold;
+      margin-left: 5px;
+    }
+
+    /* ===== Right (Image) ===== */
+    .image-section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .image-section img {
+      max-width: 300px;
+      width: 100%;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Left Side (Form) -->
+    <div class="form-section" >
+      <div class="logo">💙Health Care</div>
+      <h2><b>Login</b></h2>
+      <form id="loginForm">
+        <div class="input-box">
+          <input type="email" class="email" id="email" placeholder="✉ Enter your Email" required>
+        </div>
+        <div class="input-box">
+          <input type="password" class="password" id="password" placeholder="🔒 Enter your password" required>
+        </div>
+        <button type="submit" class="btn-login">Login</button>
+      </form>
+      <div class="register-link">
+        Don’t have an account yet? <a href="signuppage.html">Register</a>
+      </div>
+    </div>
+
+    <!-- Right Side (Image) -->
+    <div class="image-section">
+      <img src="acdac8484dbc55288f48b2bd35e42300-removebg-preview.png" alt="Doctor Illustration">
+    </div>
+  </div>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      if (!email || !password) {
+        alert('Please enter both email and password.');
+        return;
+      }
+      fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      })
+      .then(async response => {
+        if (response.ok) {
+          localStorage.setItem('userEmail', email);
+          if (email === 'hospital@gmail.com') {
+            window.location.href = 'doctor.html';
+          } else {
+            window.location.href = 'Patientview.html';
+          }
+        } else {
+          const error = await response.text();
+          alert(error || 'Login failed. Please check your credentials.');
+        }
+      })
+      .catch(() => {
+        alert('Network error. Please try again.');
+      });
+    });
+  </script>
+</body>
+</html>

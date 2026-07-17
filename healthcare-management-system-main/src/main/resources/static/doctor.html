@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doctor || HealthCare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== Reset ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    body {
+      background-color: #f8faff;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* ===== Header ===== */
+    header {
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #1d3cb3;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    nav ul li a {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #333;
+      position: relative;
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    nav ul li a:hover {
+      color: #1d3cb3;
+      background: #eaf0ff;
+      box-shadow: 0 2px 8px rgba(29,60,179,0.08);
+      text-decoration: none;
+    }
+    
+
+    .btn-login {
+      background: #1d3cb3;
+      color: #fff;
+      padding: 0.5rem 1.2rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: background 0.3s;
+      }    
+      /* Remove hover effect for login button */
+      .btn-login:hover {
+        background: #1d3cb3; /* Restore previous background */
+        color: #fff; /* Keep text color */
+        box-shadow: none; /* Remove box shadow */
+    }
+
+    /* ===== Hero Section ===== */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 8%;
+  flex-wrap: wrap;
+  gap: 7rem; /* space between text and image */
+}
+
+.hero-text {
+  max-width: 45%;
+}
+
+.hero-text h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1d3cb3;
+  margin-bottom: 1rem;
+}
+
+.hero-text p {
+  color: #444;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem; /* spacing if multiple buttons later */
+}
+
+.btn-primary {
+  background: #1d3cb3;
+  color: #fff;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: 0.3s;
+  display: inline-block;
+   transform: translateY(0);
+}
+
+.btn-primary:hover {
+  background: #162f8f;
+   transform: translateY(-4px) scale(1.04);
+}
+.btn-primary1 {
+  /* background: #1d3cb3; */
+  border: 2px solid blue;
+  color: #0220ba;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: 0.3s;
+  display: inline-block;
+   transform: translateY(0);
+}
+
+.btn-primary1:hover {
+  border-color: #162f8f;
+  color: #162f8f;
+  background: #eaf0ff;
+  transform: translateY(-4px) scale(1.04);
+}
+
+.hero-img img {
+  
+  width: 450px;
+  display: block;
+}
+
+    /* ===== About Us ===== */
+    .about {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+      padding: 3rem 8%;
+      flex-wrap: wrap;
+    }
+
+    .about-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .about-text h3 {
+      font-size: 1.6rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #1d3cb3;
+    }
+
+    .about-text p {
+      max-width: 600px;
+    }
+
+    .stats {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      min-width: 300px;
+    }
+
+    .stat-box {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .stat-box h4 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-box:first-child h4 {
+      color: orangered;
+    }
+
+    /* ===== Departments ===== */
+    .departments {
+      padding: 3rem 8%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem; /* more spacing between cards */
+    }
+
+    .dept-box {
+      background: #f0f6ff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+
+    .dept-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .dept-box h4 {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #1d3cb3;
+    }
+
+    .dept-box p {
+      font-size: 1rem;
+      color: #444;
+      line-height: 1.6;
+      white-space: normal; /* ensures proper wrapping */
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background: #fff;
+      padding: 2rem 8%;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      border-top: 1px solid #eee;
+    }
+
+    footer .footer-logo {
+      font-weight: bold;
+      color: #1d3cb3;
+      font-size: 1.2rem;
+    }
+
+    footer .footer-col {
+      margin-top: 1rem;
+    }
+
+    footer .footer-col h5 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    footer .footer-col a {
+      display: block;
+      color: #444;
+      margin-bottom: 0.3rem;
+    }
+
+    footer .copyright {
+      width: 100%;
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header>
+    <div class="logo">💙 HealthCare</div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">View Bookings</a></li> 
+        <li><a href="#departments">Departments</a></li>
+        <li><a href="#aboutus">About us</a></li> 
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== Hero Section ===== -->
+  <section class="hero" id="heroSection">
+    <div class="hero-text">
+      <h2>We Care <br> About Your Health</h2>
+      <p>Don’t wait for tomorrow. Your health matters today. Book a consultation with our caring doctors and get personalized care tailored to your needs.</p>
+      <div class="hero-buttons">
+        <a href="prescriptionpage.html" class="btn-primary" id="addPrescriptionBtn">Add Prescription</a>
+        <a href="viewprescriptions.html" class="btn-primary1" id="viewPrescriptionBtn">View Prescription</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="d9945e005fde47b99e8c8a617497b1b0-removebg-preview.png" alt="Doctors Illustration">
+    </div>
+  </section>
+
+  <!-- ===== Bookings Section (Hidden by default) ===== -->
+  <section id="bookingsSection" style="display:none; padding:3rem 8%;">
+    <h2 style="color:#1d3cb3; margin-bottom:2rem;">Department-wise Bookings</h2>
+    <div id="bookingsContent">
+      <!-- Bookings will be dynamically inserted here -->
+    </div>
+  </section>
+
+
+
+  <!-- ===== About Us ===== -->
+  <section class="about"id="aboutus">
+    <div class="about-text">
+      <h3>ABOUT US</h3>
+      <p>At HealthCare, every heartfelt moment and every smile inspires us. Our skilled doctors and caring staff blend expertise with empathy to heal with hope. 
+        Cutting-edge technology meets a human touch, ensuring comfort along with care.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat-box">
+        <h4>1000+</h4>
+        <p>Lives Saved Through Our Care</p>
+      </div>
+      <div class="stat-box">
+        <h4>250+</h4>
+        <p>Specialized Doctors On Duty</p>
+      </div>
+      <div class="stat-box">
+        <h4>500+</h4>
+        <p>Patients Treated Every Day</p>
+      </div>
+      <div class="stat-box">
+        <h4>25</h4>
+        <p>Hospitals & Clinics Across The Globe</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Departments ===== -->
+  <section class="departments" id="departments">
+    <div class="dept-box">
+      <h4>Cardiology</h4>
+      <p>Caring for your heart with expertise and compassion. From early diagnosis to advanced treatments, our cardiology team ensures every heartbeat stays strong and healthy with regular checkups, advanced care, and modern treatment methods.</p>
+    </div>
+    <div class="dept-box">
+      <h4>Dermatology</h4>
+      <p>Expert care for your skin and overall health. From diagnosis to treatment, our dermatology specialists help you achieve radiant and healthy skin, ensuring long-lasting care and confidence.</p>
+    </div>
+    <div class="dept-box">
+      <h4>Gynecology</h4>
+      <p>Dedicated care for women’s health at every stage of life. Our gynecology department ensures your well-being with advanced treatments, preventive care, and compassionate support.</p>
+    </div>
+    <div class="dept-box">
+      <h4>Diabetes</h4>
+      <p>Helping you manage diabetes with expert medical guidance, lifestyle tips, and modern treatments. Our doctors provide continuous care to help you live a healthier and stronger life.</p>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+<script>
+// Show bookings section and hide others when 'View Bookings' is clicked
+document.addEventListener('DOMContentLoaded', function() {
+  const viewBookingsLink = Array.from(document.querySelectorAll('nav ul li a')).find(a => a.textContent.trim().toLowerCase().includes('view bookings'));
+  const bookingsSection = document.getElementById('bookingsSection');
+  const heroSection = document.getElementById('heroSection');
+  const aboutSection = document.querySelector('.about');
+  const departmentsSection = document.querySelector('.departments');
+
+  if (viewBookingsLink) {
+    viewBookingsLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      bookingsSection.style.display = 'block';
+      heroSection.style.display = 'none';
+      if (aboutSection) aboutSection.style.display = 'none';
+      if (departmentsSection) departmentsSection.style.display = 'none';
+      // Optionally fetch bookings here
+          loadBookings(); // Fetch bookings from backend and display department-wise
+    });
+  }
+
+  // Restore main sections if needed (e.g., Home click)
+  const homeLink = Array.from(document.querySelectorAll('nav ul li a')).find(a => a.textContent.trim().toLowerCase() === 'home');
+  if (homeLink) {
+    homeLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      bookingsSection.style.display = 'none';
+      heroSection.style.display = 'flex';
+      if (aboutSection) aboutSection.style.display = 'flex';
+      if (departmentsSection) departmentsSection.style.display = 'grid';
+    });
+  }
+
+      function loadBookings() {
+        const bookingsContent = document.getElementById('bookingsContent');
+        bookingsContent.innerHTML = '<p style="color:#777;">Loading bookings...</p>';
+        fetch('/api/appointments/doctor/departments')
+          .then(response => response.json())
+          .then(bookings => {
+            // bookings should be an object: { Cardiology: [...], Dermatology: [...], ... }
+            let html = '';
+            Object.keys(bookings).forEach(dept => {
+              html += `<div style="margin-bottom:2rem;"><h3 style="color:#1d3cb3;">${dept}</h3>`;
+              if (!bookings[dept] || bookings[dept].length === 0) {
+                html += '<p style="color:#777;">No bookings found.</p>';
+              } else {
+                html += '<table style="width:100%;border-collapse:collapse;margin-top:1rem;">';
+                html += '<tr style="background:#f0f6ff;"><th style="padding:8px 12px;text-align:left;">Patient</th><th style="padding:8px 12px;text-align:left;">Date</th><th style="padding:8px 12px;text-align:left;">Time</th></tr>';
+                bookings[dept].forEach(b => {
+                  html += `<tr><td style="padding:8px 12px;">${b.name}</td><td style="padding:8px 12px;">${b.date}</td><td style="padding:8px 12px;">${b.time}</td></tr>`;
+                });
+                html += '</table>';
+              }
+              html += '</div>';
+            });
+            bookingsContent.innerHTML = html;
+          })
+          .catch(() => {
+            bookingsContent.innerHTML = '<p style="color:#c00;">Error loading bookings. Please try again later.</p>';
+          });
+      }
+});
+</script>
+    <div class="footer-logo">💙 HealthCare</div>
+    <div class="footer-col">
+      <h5>Pages</h5>
+      <a href="#">Home</a>
+      <a href="#">About Us</a>
+    </div>
+    <div class="footer-col">
+      <h5>Departments</h5>
+      <a href="#">Cardiology</a>
+      <a href="#">Gynecology</a>
+      <a href="#">Dermatology</a>
+      <a href="#">Diabetes</a>
+    </div>
+    <div class="footer-col">
+      <h5>Contact Us</h5>
+      <p>📍 1810 Criss St, South Gate, CA 90280</p>
+      <p>📞 +91 8899653741</p>
+      <p>🌐 www.healthcare.com</p>
+    </div>
+    <div class="copyright">
+      <br>Abdul Azeez<br>© 2026 HealthCare. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>

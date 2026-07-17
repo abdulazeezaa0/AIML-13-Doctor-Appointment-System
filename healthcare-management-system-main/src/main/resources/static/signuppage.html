@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Care Register</title>
+  <!-- Font Awesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      /* Soft gradient background */
+      background: linear-gradient(135deg, #e6f0ff, #f9fbfd, #dbe6f6);
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 950px;
+      width: 100%;
+      padding: 20px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0px 6px 18px rgba(0,0,0,0.1);
+    }
+
+    .form-box {
+      flex: 1;
+      max-width: 400px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .logo span {
+      color: #1f51ff;
+    }
+
+    .logo i {
+      color: #0077ff;
+      margin-right: 8px;
+      font-size: 26px;
+    }
+
+    h2 {
+      color: #1f51ff;
+      margin-bottom: 20px;
+    }
+
+    .input-box {
+      position: relative;
+      margin-bottom: 15px;
+    }
+
+    .input-box input {
+      width: 100%;
+      padding: 18px 15px;
+      padding-left: 40px;
+      border-radius: 8px;
+      border: 1px solid #d3d8f0;
+      outline: none;
+      background: #f9faff;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .input-box input:focus {
+      border-color: #4a73f1;
+      background: #fff;
+      box-shadow: 0 0 6px rgba(74,104,246,0.3);
+    }
+
+    .input-box i {
+      position: absolute;
+      top: 50%;
+      left: 12px;
+      transform: translateY(-50%);
+      color: #555;
+      font-size: 16px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background: #4a73f1;
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #365ed6;
+    }
+
+    .login-link {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .login-link a {
+      color: #1f51ff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .image-box {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .image-box img {
+      max-width: 300px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Left Side Form -->
+    <div class="form-box">
+      <div class="logo">
+        <i class="fa-solid fa-heart"></i><span> Health Care</span>
+      </div>
+
+      <h2>Register</h2>
+
+      <div class="input-box">
+        <i class="fa-solid fa-envelope"></i>
+        <input type="email" placeholder="Enter your Email" required>
+      </div>
+      <div class="input-box">
+        <i class="fa-solid fa-user"></i>
+        <input type="text" placeholder="Enter your name" required>
+      </div>
+      <div class="input-box">
+        <i class="fa-solid fa-lock"></i>
+        <input type="password" placeholder="Enter your password" required>
+      </div>
+      <div class="input-box">
+        <i class="fa-solid fa-lock"></i>
+        <input type="password" placeholder="Confirm your password" required>
+      </div>
+
+      <button class="btn" onclick="registerUser()">Register</button>
+
+      <p class="login-link">
+        Already have an account? <a href="loginpage.html">Login</a>
+      </p>
+    </div>
+
+    <!-- Right Side Image -->
+    <div class="image-box">
+      <img src="acdac8484dbc55288f48b2bd35e42300-removebg-preview.png" alt="Doctor">
+    </div>
+  </div>
+
+  <script>
+    function registerUser() {
+      const inputs = document.querySelectorAll('.input-box input');
+      const email = inputs[0].value.trim();
+      const name = inputs[1].value.trim();
+      const password = inputs[2].value;
+      const confirmPassword = inputs[3].value;
+      if (!email || !name || !password || !confirmPassword) {
+        alert('Please fill all fields.');
+        return;
+      }
+      if (password !== confirmPassword) {
+        alert('Passwords do not match.');
+        return;
+      }
+      fetch('/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, name, password })
+      })
+      .then(async response => {
+        if (response.ok) {
+          alert('Registered successfully!');
+          window.location.href = 'loginpage.html';
+        } else {
+          const error = await response.text();
+          alert(error || 'Registration failed.');
+        }
+      })
+      .catch(() => {
+        alert('Network error. Please try again.');
+      });
+    }
+  </script>
+    </div>
+
+    <!-- Right Side Image -->
+
+  </div>
+
+ 
+
+</body>
+</html>

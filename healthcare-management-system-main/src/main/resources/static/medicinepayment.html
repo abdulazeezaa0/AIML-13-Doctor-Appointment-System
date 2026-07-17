@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Secure Payment - Healthcare</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f2f5;
+      min-height: 100vh;
+    }
+
+    /* Navbar */
+    nav {
+      background-color: #0077cc;
+      padding: 15px 30px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+    }
+
+    nav .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      background-color: #fff;
+      max-width: 550px;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #0077cc;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      color: #333;
+      font-weight: 600;
+    }
+
+    .input-group {
+      position: relative;
+    }
+
+    .input-group i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #888;
+    }
+
+    .input-group input,
+    .input-group select,
+    .input-group textarea {
+      width: 100%;
+      padding: 10px 10px 10px 35px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .input-group textarea {
+      padding-left: 35px;
+      resize: vertical;
+    }
+
+    button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #005fa3;
+    }
+
+    .success {
+      text-align: center;
+      margin-top: 20px;
+      color: green;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav .nav-links {
+        margin-top: 10px;
+      }
+
+      nav .nav-links a {
+        margin: 5px 10px 0 0;
+        display: inline-block;
+      }
+
+      .container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="logo"><i class="fa-solid fa-heart-pulse"></i> Healthcare</div>
+    <div class="nav-links">
+      <a href="userview.html">Home</a>
+    </div>
+  </nav>
+
+  <!-- Payment Form -->
+  <div class="container">
+    <h2><i class="fa-solid fa-credit-card"></i> Make a Payment</h2>
+
+    <form id="paymentForm">
+      <label for="name">Full Name</label>
+      <div class="input-group">
+        <i class="fa-solid fa-user"></i>
+        <input type="text" id="name" name="name" required />
+      </div>
+
+      <label for="email">Email Address</label>
+      <div class="input-group">
+        <i class="fa-solid fa-envelope"></i>
+        <input type="email" id="email" name="email" required />
+      </div>
+
+      <label for="amount">Amount (INR)</label>
+      <div class="input-group">
+        <i class="fa-solid fa-indian-rupee-sign"></i>
+        <input type="number" id="amount" name="amount" value="100" readonly required />
+      </div>
+
+  
+
+
+      <label for="paymentDate">Payment Date</label>
+      <div class="input-group">
+        <i class="fa-solid fa-calendar-day"></i>
+        <input type="date" id="paymentDate" name="paymentDate" required readonly />
+      </div>
+
+      <label for="paymentMethod">Payment Method</label>
+      <div class="input-group">
+        <i class="fa-solid fa-wallet"></i>
+        <select id="paymentMethod" name="paymentMethod" required>
+          <option value="">-- Select Method --</option>
+          <option value="card">Credit/Debit Card</option>
+          <option value="upi">UPI</option>
+          <option value="paypal">PayPal</option>
+        </select>
+      </div>
+
+      <label for="notes">Notes (Optional)</label>
+      <div class="input-group">
+        <i class="fa-solid fa-message"></i>
+        <textarea id="notes" name="notes" placeholder="Any specific instructions or notes..."></textarea>
+      </div>
+
+      <button type="submit"><i class="fa-solid fa-lock"></i> Pay Now</button>
+    </form>
+
+    <div id="successMsg" class="success" style="display: none;">
+      <i class="fa-solid fa-circle-check"></i> Payment submitted successfully! We'll contact you shortly.
+    </div>
+  </div>
+
+  <!-- Thank You Message -->
+  <div style="text-align: center; margin-top: 40px; color: #444; font-size: 1rem;">
+    <p><i class="fa-solid fa-heart-circle-check" style="color: #0077cc;"></i> Thank you for trusting <strong>Healthcare</strong>. We appreciate your payment.</p>
+  </div>
+
+  <script>
+    // Set payment date to current system date
+    window.addEventListener('DOMContentLoaded', function() {
+      const paymentDateInput = document.getElementById('paymentDate');
+      const now = new Date();
+      const yyyy = now.getFullYear();
+      const mm = String(now.getMonth() + 1).padStart(2, '0');
+      const dd = String(now.getDate()).padStart(2, '0');
+      paymentDateInput.value = `${yyyy}-${mm}-${dd}`;
+    });
+    document.getElementById('paymentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const amount = document.getElementById('amount').value.trim();
+      const paymentDate = document.getElementById('paymentDate').value;
+      const paymentMethod = document.getElementById('paymentMethod').value;
+      const notes = document.getElementById('notes').value.trim();
+      if (!name || !email || !amount || !paymentDate || !paymentMethod) {
+        alert('Please fill all required fields.');
+        return;
+      }
+      fetch('/api/medicine-payments', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          amount: parseFloat(amount),
+          paymentDate,
+          paymentMethod,
+          notes
+        })
+      })
+      .then(async response => {
+        if (response.ok) {
+          window.location.href = 'Prescriptionsucc.html';
+        } else {
+          alert('Payment failed. Please try again.');
+        }
+      })
+      .catch(() => {
+        alert('Payment failed. Please try again.');
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Appointment Booking - Healthcare</title>
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f8;
+      min-height: 100vh;
+    }
+
+    /* Navbar */
+    nav {
+      background-color: #0077cc;
+      padding: 15px 30px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+    }
+
+    nav .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px;
+      margin: 30px auto;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 600px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      text-align: center;
+      color: #333;
+    }
+
+    .info-section {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #555;
+    }
+
+    .info-section p {
+      margin: 8px 0;
+    }
+
+    .info-section i {
+      color: #0077cc;
+      margin-right: 8px;
+    }
+
+    form label {
+      margin-top: 15px;
+      display: block;
+      font-weight: 600;
+      color: #555;
+    }
+
+    .input-group {
+      position: relative;
+      margin-top: 8px;
+    }
+
+    .input-group i {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999;
+    }
+
+    .input-group input,
+    .input-group select,
+    .input-group textarea {
+      width: 100%;
+      padding: 10px 10px 10px 35px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    .input-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #005fa3;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #confirmation {
+      text-align: center;
+      color: green;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav .nav-links {
+        margin-top: 10px;
+      }
+
+      nav .nav-links a {
+        margin: 5px 10px 0 0;
+        display: inline-block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="logo"><i class="fa-solid fa-heart-pulse"></i> Healthcare</div>
+    <div class="nav-links">
+      <a href="Patientview.html">Home</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h1><i class="fa-solid fa-calendar-check"></i> Book an Appointment</h1>
+
+    <div class="info-section">
+      <p><i class="fa-solid fa-location-dot"></i> Hyderabad, Telangana</p>
+      <p><i class="fa-solid fa-clock"></i> Mon - Fri: 9:00 AM - 6:00 PM</p>
+      <p><i class="fa-solid fa-phone"></i> +91 8099922007</p>
+      <p><i class="fa-solid fa-envelope"></i> azeez@healthcare.com</p>
+    </div>
+
+    <form id="bookingForm">
+      <label for="name">Full Name</label>
+      <div class="input-group">
+        <i class="fa-solid fa-user"></i>
+        <input type="text" id="name" name="name" required />
+      </div>
+
+      <label for="email">Email</label>
+      <div class="input-group">
+        <i class="fa-solid fa-envelope"></i>
+        <input type="email" id="email" name="email" required />
+      </div>
+
+      <label for="phone">Phone Number</label>
+      <div class="input-group">
+        <i class="fa-solid fa-phone"></i>
+        <input type="tel" id="phone" name="phone" required />
+      </div>
+
+      <label for="date">Preferred Date</label>
+      <div class="input-group">
+        <i class="fa-solid fa-calendar-day"></i>
+  <input type="date" id="date" name="date" required min="" />
+      </div>
+
+      <label for="time">Preferred Time</label>
+      <div class="input-group">
+        <i class="fa-solid fa-clock"></i>
+  <input type="time" id="time" name="time" required min="" />
+      </div>
+
+      <label for="department">Department</label>
+      <div class="input-group" id="departmentGroup">
+        <i class="fa-solid fa-building-user"></i>
+        <select id="department" name="department" required>
+          <option value="">-- Select a Department --</option>
+          <option value="cardiology">Cardiology</option>
+          <option value="dermatology">Dermatology</option>
+          <option value="gynecology">Gynecology</option>
+          <option value="diabetes">Diabetes</option>
+        </select>
+      </div>
+
+      <label for="reason">Reason for Booking</label>
+      <div class="input-group">
+        <i class="fa-solid fa-comment-dots"></i>
+        <textarea id="reason" name="reason" placeholder="Briefly describe your reason for booking..." required></textarea>
+      </div>
+
+      <button type="submit"><i class="fa-solid fa-paper-plane"></i> Book Now</button>
+    </form>
+
+    <div id="confirmation" class="hidden">
+      <h2><i class="fa-solid fa-circle-check"></i> Appointment Confirmed!</h2>
+      <p>Thank you for booking with <strong>Healthcare</strong>. We'll contact you shortly.</p>
+    </div>
+  </div>
+
+  <script>
+    // Hide department select if navigated from doctors.html
+    document.addEventListener('DOMContentLoaded', function() {
+      const params = new URLSearchParams(window.location.search);
+      const dept = params.get('dept');
+      const departmentGroup = document.getElementById('departmentGroup');
+      const departmentSelect = document.getElementById('department');
+      if (dept) {
+        departmentGroup.style.display = 'none';
+        // Set department value for backend
+        let deptVal = dept.toLowerCase();
+        // Map department names to select values if needed
+        if (["cardiology","dermatology","gynecology","diabetes"].includes(deptVal)) {
+          departmentSelect.value = deptVal;
+        }
+      } else {
+        departmentGroup.style.display = '';
+        departmentSelect.value = '';
+      }
+    });
+    // Set min date and min time to prevent past selection
+    window.addEventListener('DOMContentLoaded', function() {
+      const dateInput = document.getElementById('date');
+      const timeInput = document.getElementById('time');
+      const now = new Date();
+      // Format date as yyyy-mm-dd
+      const yyyy = now.getFullYear();
+      const mm = String(now.getMonth() + 1).padStart(2, '0');
+      const dd = String(now.getDate()).padStart(2, '0');
+      const minDate = `${yyyy}-${mm}-${dd}`;
+      dateInput.min = minDate;
+      // Format time as HH:MM
+      const hh = String(now.getHours()).padStart(2, '0');
+      const min = String(now.getMinutes()).padStart(2, '0');
+      const minTime = `${hh}:${min}`;
+      timeInput.min = minTime;
+      // Reset time min if date changes
+      dateInput.addEventListener('change', function() {
+        if (dateInput.value === minDate) {
+          timeInput.min = minTime;
+        } else {
+          timeInput.min = '00:00';
+        }
+      });
+    });
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const date = document.getElementById('date').value;
+      const time = document.getElementById('time').value;
+      const department = document.getElementById('department').value;
+      const reason = document.getElementById('reason').value.trim();
+      if (!name || !email || !phone || !date || !time || !department || !reason) {
+        alert('Please fill all fields.');
+        return;
+      }
+      fetch('/api/appointments', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, email, phone, date, time, department, reason })
+      })
+      .then(async response => {
+        if (response.ok) {
+          window.location.href = 'bookingconfirmed.html';
+        } else {
+          alert('Booking cancelled. Please try again.');
+        }
+      })
+      .catch(() => {
+        alert('Booking cancelled. Please try again.');
+      });
+    });
+  </script>
+
+</body>
+</html>
